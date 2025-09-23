@@ -49,7 +49,7 @@ def wobble_win_UI(width = 250, height = 350, spacing = 10, cwidth = 350):
     cmds.text(label = 'Offset: Shift the start angle.', align = 'left')
     cmds.text(label = 'Phase: Shift the start.', align = 'left')
     frequency = cmds.floatSliderGrp( 
-                        'frequency',
+                        'frequencySlider',
                         label = 'Frequency:', 
                         field = True, 
                         minValue = 0.0, 
@@ -95,16 +95,16 @@ def wobble_win_UI(width = 250, height = 350, spacing = 10, cwidth = 350):
     cmds.rowColumnLayout ( adjustableColumn = True, numberOfColumns = 3)
     cmds.button(
                 label = 'Wobble and close', 
-                command = 'import wobble_gui_lanh; wobble_gui_lanh.wobble_close_CB()'
+                command = 'import wobble_gui_lanh_v02; wobble_gui_lanh_v02.wobble_close_CB()'
 
                 )
     cmds.button(
                 label = 'Wobble', 
-                command = 'import wobble_gui_lanh; wobble_gui_lanh.wobble_CB()'
+                command = 'import wobble_gui_lanh_v02; wobble_gui_lanh_v02.wobble_CB()'
                 )
     cmds.button(
                 label = 'Close', 
-                command = 'import wobble_gui_lanh; wobble_gui_lanh.close_ui_CB()'
+                command = 'import wobble_gui_lanh_v02; wobble_gui_lanh_v02.close_ui_CB()'
                 )
     
     # Show the window.
@@ -126,25 +126,25 @@ def wobble_CB():
     '''
     # Queerys the new users values as inputs.
     new_frequency =   cmds.floatSliderGrp(
-                                frequency,
+                                'frequencySlider',
                                 query = True, 
                                 field = True, 
                                 value = True, 
                                 )
     new_amplitude =   cmds.floatSliderGrp(
-                                amplitude,
+                                'amplitude',
                                 query = True, 
                                 field = True, 
                                 value = True, 
                                 )
-    new_offset =   ocmds.floatSliderGrp(
-                        offset,
+    new_offset =   cmds.floatSliderGrp(
+                        'offset',
                         query = True, 
                         field = True, 
                         value = True, 
                         )
     new_phase =   cmds.floatSliderGrp(
-                        phase,
+                        'phase',
                         query = True, 
                         field = True, 
                         value = True, 
